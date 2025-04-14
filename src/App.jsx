@@ -3,29 +3,33 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+const initialValues = {
+  username: "",
+  email: "",
+  password: "",
+};
+
 function App() {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState(initialValues);
 
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
 
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    // reseting the form by setting empty values to the state
+    setFormData(initialValues);
   };
+  console.log(formData);
 
   return (
-    <form onSubmit={handleSubmit} onChange={handleInputChange}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         name="username"
@@ -53,7 +57,9 @@ function App() {
       />
       <br />
 
-      <button type="submit">Submit</button>
+      <button type="submit" onSubmit={handleSubmit}>
+        Submit
+      </button>
     </form>
   );
 }
