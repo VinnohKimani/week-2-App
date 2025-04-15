@@ -2,6 +2,8 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import { Users } from "./Components/Users";
+import { Cars } from "./Components/Cars";
 
 const initialValues = {
   username: "",
@@ -38,7 +40,6 @@ function App() {
         placeholder="Username"
       />
       <br />
-
       <input
         type="email"
         name="email"
@@ -47,7 +48,6 @@ function App() {
         placeholder="Email"
       />
       <br />
-
       <input
         type="password"
         name="password"
@@ -56,10 +56,11 @@ function App() {
         placeholder="Password"
       />
       <br />
-
       <button type="submit" onSubmit={handleSubmit}>
         Submit
       </button>
+      <Users />
+      <Cars />
     </form>
   );
 }
