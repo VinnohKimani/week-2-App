@@ -22,18 +22,42 @@ export const Cars = () => {
       });
   }, []);
 
+  const carList = cars.map((car) => {
+    // const stringifyCars = JSON.stringify(car);
+    // console.log(stringifyCars);
+
+    // const parseCars = JSON.parse(stringifyCars);
+    // console.log(parseCars);
+    return (
+      <li key={car.id}>
+        <h3>Car Make:{car.make}</h3>
+        <p>
+          Model:{car.model}
+          <br />
+          Year:{car.year}
+          <br />
+          Color:{car.color}
+          <br />
+          Price:{car.price}
+          <br />
+          Fuel Type:{car.fuelType}
+        </p>
+        <br />
+      </li>
+    );
+  });
+
   return (
     <div>
-      <input type="text" onChange={(e) => setInput(e.target.value)} />
+      <input
+        type="text"
+        onChange={(e) => setInput(e.target.value)}
+        className="outline-2 rounded-sm"
+      />
 
-      {cars.map((car) => {
-        return (
-          <div key={car.id}>
-            <h3>{car.make}</h3>
-            <p>{car.model}</p>
-          </div>
-        );
-      })}
+      <div className="bg-blue-600 rounded-xl mr-200 pt-2 text-shadow-white">
+        <ol>{carList}</ol>
+      </div>
     </div>
   );
 };
